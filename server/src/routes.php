@@ -333,7 +333,7 @@ $app->post("/vote", function ($request, $response, $args) {
             $db_params_update = [
                 "personId" => $personId,
             ];
-            $db->postQuery($sql_insert, $db_params_insert, "Your vote has count for " . $person);
+            $db->postQuery($sql_insert, $db_params_insert, "Congratulations you just voted for " . $person);
             $db->postQuery($sql_update, $db_params_update);
         }
     } else {
