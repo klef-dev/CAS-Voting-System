@@ -123,7 +123,7 @@ $app->post("/add", function ($request, $response) {
     $db = new Db();
 
     // INSERT INTO DB
-    $sql = "INSERT INTO nominees (personId, reg_no, person, personImage, category) VALUES(:personId, :reg_no, :person, :personImage, :category)";
+    $sql = "INSERT INTO nominees (personId, reg_no, person, personImage, category, likes) VALUES(:personId, :reg_no, :person, :personImage, :category, 0)";
     $db_params = [
         "personId" => $personId,
         "reg_no" => $db->cleanInput($reg_no),
