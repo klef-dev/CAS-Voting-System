@@ -1,10 +1,10 @@
 <?php
 class Db
 {
-    protected $dbhost = "localhost";
-    protected $dbname = "cas";
-    protected $dbuser = "root";
-    protected $dbpass = "";
+    protected $dbhost = "https://www.db4free.net/phpMyAdmin/";
+    protected $dbname = "cas_voting_site";
+    protected $dbuser = "klefcodes";
+    protected $dbpass = "Jesus_999";
 
     public function connect()
     {
