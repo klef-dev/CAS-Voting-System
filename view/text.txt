@@ -1,0 +1,25 @@
+1. FRESHMAN OF THE YEAR
+
+2. FACE OF CAS
+
+3. MOST SOCIABLE
+
+4. ENTREPRENEUR OF THE YEAR
+
+5. MOST FASHIONABLE
+
+6. FINAL YEAR PERSONALITY
+
+7. LEADERSHIP AWARD
+
+8. SPORTSMANSHIP AWARD
+Bishop Zebulun Ojo
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    RewriteRule ^index\.html$ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.html [L]
+ </IfModule>
