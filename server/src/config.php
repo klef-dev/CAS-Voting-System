@@ -107,7 +107,8 @@ class Db
         $email->addContent(
             "text/html", $body
         );
-        $sendgrid = new \SendGrid(API_KEY);
+        $API_KEY = "";
+        $sendgrid = new \SendGrid($API_KEY);
         try {
             $response = $sendgrid->send($email);
             if ($response->statusCode() == 202) {
@@ -119,14 +120,4 @@ class Db
             echo 'Caught exception: ' . $e->getMessage() . "\n";
         }
     }
-
-    // public function search($search)
-    // {
-    //     $names = explode(" ", $search);
-    //     $reg_no = explode(" ", $search);
-    //     $statement = $this->connect()->prepare("SELECT * FROM students WHERE reg_no LIKE :mention OR reg_no LIKE '%$reg_no[0]%' OR name LIKE :mention OR name LIKE '%$names[0]%'");
-    //     $statement->bindValue(':mention', $search . '%');
-    //     $statement->execute();
-    //     return $statement->fetchAll(PDO::FETCH_OBJ);
-    // }
 }
