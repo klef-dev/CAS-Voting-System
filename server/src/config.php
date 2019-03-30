@@ -1,7 +1,7 @@
 <?php
 class Db
 {
-    protected $dbhost = "https://www.db4free.net/phpMyAdmin";
+    protected $dbhost = "https://www.db4free.net";
     protected $dbname = "cas_voting_site";
     protected $dbuser = "klefcodes";
     protected $dbpass = "Jesus_999";
