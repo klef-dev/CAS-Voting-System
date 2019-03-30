@@ -1,4 +1,4 @@
-const API = "https://cas-vs-server.herokuapp.com/public";
+const API = "http://cas-vs-server.herokuapp.com/public";
 const routes = [
   { path: "/", component: Home },
   { path: "*", component: NotFound },
