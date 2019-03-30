@@ -187,7 +187,7 @@ $app->post("/signup", function ($request, $response) {
         return '{"error": {"err_text": "Hello, you can not register two time ooo..."}}';
     } else {
         // INSERT INTO DB
-        $sql = "INSERT INTO students (user_id, reg_no, password) VALUES(:user_id,:reg_no, :password)";
+        $sql = "INSERT INTO students (user_id, reg_no, password, voted) VALUES(:user_id,:reg_no, :password, 0)";
         $db_params = [
             "user_id" => $user_id,
             "reg_no" => $db->cleanInput($reg_no),
