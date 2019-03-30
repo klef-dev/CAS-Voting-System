@@ -101,13 +101,13 @@ class Db
     {
         require '../sendgrid/vendor/autoload.php';
         $email = new \SendGrid\Mail\Mail();
-        $email->setFrom("iot-diamond@lmu.edu.ng", "IOT Diamond Group 1");
+        $email->setFrom("cas@lmu.edu.ng", "CAS Official Voting System 2019");
         $email->setSubject($subject);
         $email->addTo($address, $name);
         $email->addContent(
             "text/html", $body
         );
-        $sendgrid = new \SendGrid("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");
+        $sendgrid = new \SendGrid(API_KEY);
         try {
             $response = $sendgrid->send($email);
             if ($response->statusCode() == 202) {
