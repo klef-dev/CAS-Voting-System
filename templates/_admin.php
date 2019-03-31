@@ -65,6 +65,7 @@
                     type="text"
                     class="form-control"
                     placeholder="Enter username"
+                    :disabled="disabled"
                   />
                 </div>
                 <div class="form-group">
@@ -74,6 +75,7 @@
                     required="required"
                     class="form-control"
                     placeholder="Password"
+                    :disabled="disabled"
                   />
                 </div>
                 <div class="form-group">
@@ -81,6 +83,7 @@
                     @click="Auth"
                     class="btn btn-primary btn-send-message"
                     v-html="login"
+                    :disabled="disabled"
                   ></button>
                 </div>
               </form>
@@ -145,7 +148,7 @@
               class="col-md-10 col-md-offset-1 col-md-pull-1 animate-box"
               data-animate-effect="fadeInLeft"
             >
-              <form method="POST" disabled="true">
+              <form method="POST">
                 <div class="form-group">
                   <input
                     v-model="reg_no"
@@ -156,6 +159,7 @@
                     type="text"
                     class="form-control"
                     placeholder="Reg No: 1700172"
+                    :disabled="disabled"
                   />
                 </div>
                 <div class="form-group">
@@ -167,10 +171,11 @@
                     type="text"
                     class="form-control"
                     placeholder="Enter Name"
+                    :disabled="disabled"
                   />
                 </div>
                 <div class="form-group">
-                  <select v-model="category" class="form-control">
+                  <select v-model="category" class="form-control" :disabled="disabled">
                     <option value="">Select Category</option>
                     <option value="FRESHMAN">FRESHMAN OF THE YEAR</option>
                     <option value="focas">FACE OF CAS</option>
@@ -186,7 +191,7 @@
                     <option value="sportman">SPORTSMANSHIP AWARD</option>
                   </select>
                   <input style="display: none" type="file" @change="personImage" ref="fileImage" />
-                  <a @click="$refs.fileImage.click()" class="btn btn-primary btn-send-message">
+                  <a @click="$refs.fileImage.click()" class="btn btn-primary btn-send-message" :disabled="disabled">
                     Pick an Image
                   </a>
                   <span v-if="imageSelected !== null" v-html="imageSelected.name"></span>

@@ -11,12 +11,13 @@ const AddNominees = Vue.component("add_nominees", {
       name: "",
       category: "",
       nominate: "Nominate",
-      imageSelected: null
+      imageSelected: null,
+      disabled: false
     };
   },
   methods: {
     personImage(event) {
-      event.preventDefault()
+      event.preventDefault();
       this.imageSelected = event.target.files[0];
     },
     Auth(e) {
@@ -35,18 +36,25 @@ const AddNominees = Vue.component("add_nominees", {
           password: password
         };
         this.login = "Loading...";
+        this.disabled = true;
         axios
           .post(`${API}/login_admin`, { ...login })
           .then(response => {
             this.password = "";
             this.login = "Login";
+            this.disabled = false;
             result = response.data;
-            if (result.error) swal("Unauthorized access", `${result.error.err_text}`, "error");
+            if (result.error)
+              swal("Unauthorized access", `${result.error.err_text}`, "error");
             else {
               localStorage.setItem("adminToken", result.token);
+              this.disabled = true;
+              this.login = "Loading...";
               axios
                 .get(`${API}/loggedin/${result.token}`)
                 .then(res => {
+                  this.disabled = false;
+                  this.login = "Login";
                   var data = res.data;
                   if (data.error) {
                     this.user_id = null;
@@ -55,11 +63,15 @@ const AddNominees = Vue.component("add_nominees", {
                   }
                 })
                 .catch(() => {
+                  this.disabled = false;
+                  this.login = "Login";
                   this.user_id = null;
                 });
             }
           })
           .catch(() => {
+            this.login = "Login";
+            this.disabled = false;
             swal({
               title: `No connection to server`,
               icon: "error"
@@ -84,10 +96,14 @@ const AddNominees = Vue.component("add_nominees", {
       } else {
         var data = new FormData();
         data.append("image", this.imageSelected, this.imageSelected.name);
+        this.disabled = true;
+        this.nominate = "Uloading Image...";
         axios
           .post(`${API}/upload`, data)
           .then(res => {
             result = res.data;
+            this.disabled = false;
+            this.nominate = "Nominate";
             if (result.success) {
               var add = {
                 person: name,
@@ -95,17 +111,23 @@ const AddNominees = Vue.component("add_nominees", {
                 category: category,
                 personImage: result.success.success_text
               };
+              this.disabled = true;
+              this.nominate = "Nominating...";
               axios
                 .post(`${API}/add`, { ...add })
                 .then(res => {
+                  this.disabled = false;
+                  this.nominate = "Nominate";
                   result = res.data;
                   if (result.success) {
                     swal("👌👌", `${result.success.success_text}`, "success");
                     this.reg_no = "";
                     this.name = "";
                     this.category = "";
-                    this.imageSelected = ""
+                    this.imageSelected = "";
                   } else {
+                    this.disabled = false;
+                    this.nominate = "Nominate";
                     swal({
                       title: `Coudn't nominate ${name}`,
                       icon: "error"
@@ -113,12 +135,16 @@ const AddNominees = Vue.component("add_nominees", {
                   }
                 })
                 .catch(() => {
+                  this.disabled = false;
+                  this.nominate = "Nominate";
                   swal({
                     title: `No connection to server`,
                     icon: "error"
                   });
                 });
             } else {
+              this.disabled = false;
+              this.nominate = "Nominate";
               swal({
                 title: `${result.error.err_text}`,
                 icon: "error"
@@ -126,6 +152,8 @@ const AddNominees = Vue.component("add_nominees", {
             }
           })
           .catch(() => {
+            this.disabled = false;
+            this.nominate = "Nominate";
             swal({
               title: `No connection to server`,
               icon: "error"
