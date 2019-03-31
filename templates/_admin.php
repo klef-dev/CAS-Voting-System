@@ -145,7 +145,7 @@
               class="col-md-10 col-md-offset-1 col-md-pull-1 animate-box"
               data-animate-effect="fadeInLeft"
             >
-              <form method="POST">
+              <form method="POST" disabled="true">
                 <div class="form-group">
                   <input
                     v-model="reg_no"
