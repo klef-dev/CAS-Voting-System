@@ -190,8 +190,7 @@
                     <option value="leadership">LEADERSHIP AWARD</option>
                     <option value="sportman">SPORTSMANSHIP AWARD</option>
                   </select>
-                  <button style="display: none" @change="personImage" ref="fileImage" /></button>
-                  <a @click="$refs.fileImage.click()" class="btn btn-primary btn-send-message" :disabled="disabled">
+                  <a @click="personImage" class="btn btn-primary btn-send-message" :disabled="disabled">
                     Pick an Image
                   </a>
                   <span v-if="imageSelected !== null" v-html="imageSelected.name"></span>
