@@ -190,17 +190,11 @@
                     <option value="leadership">LEADERSHIP AWARD</option>
                     <option value="sportman">SPORTSMANSHIP AWARD</option>
                   </select>
-                  <input
-                  type="hidden"
-                  role="uploadcare-uploader"
-                  data-image-shrink="1024x1024"
-                  data-crop="free"
-                  v-model="image" />
-                  <!-- <input style="display: none" type="file" @change="personImage" ref="fileImage" />
+                  <button style="display: none" @change="personImage" ref="fileImage" /></button>
                   <a @click="$refs.fileImage.click()" class="btn btn-primary btn-send-message" :disabled="disabled">
                     Pick an Image
                   </a>
-                  <span v-if="imageSelected !== null" v-html="imageSelected.name"></span> -->
+                  <span v-if="imageSelected !== null" v-html="imageSelected.name"></span>
                 </div>
                 <div class="form-group">
                   
@@ -228,8 +222,4 @@
   UPLOADCARE_IMAGES_ONLY = true;
   UPLOADCARE_PREVIEW_STEP = true;
   UPLOADCARE_CLEARABLE = true;
-</script>
-
-<script>
-  uploadcare.registerTab('preview', uploadcareTabEffects)
 </script>

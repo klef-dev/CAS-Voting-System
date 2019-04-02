@@ -19,7 +19,20 @@ const AddNominees = Vue.component("add_nominees", {
   methods: {
     personImage(event) {
       event.preventDefault();
-      this.imageSelected = event.target.files[0];
+      e.preventDefault();
+      uploadcare.registerTab("preview", uploadcareTabEffects);
+      UPLOADCARE_EFFECTS = ["blur", "sharp", "grayscale", "crop"];
+      uploadcare
+        .openDialog(null, {
+          previewStep: true,
+          imagesOnly: true
+        })
+        .done(function(file) {
+          file.promise().done(function(fileInfo) {
+            var img = fileInfo.cdnUrl;
+            this.imageSelected = img;
+          });
+        });
     },
     Auth(e) {
       e.preventDefault();
@@ -95,59 +108,31 @@ const AddNominees = Vue.component("add_nominees", {
       } else if (name < 3) {
         swal("Oops", "Name too short to proceed", "error");
       } else {
-        var data = new FormData();
-        data.append("image", this.imageSelected, this.imageSelected.name);
+        var add = {
+          person: name,
+          reg_no: reg_no,
+          category: category,
+          personImage: this.imageSelected
+        };
         this.disabled = true;
-        this.nominate = "Uloading Image...";
+        this.nominate = "Nominating...";
         axios
-          .post(`${API}/upload`, data)
+          .post(`${API}/add`, { ...add })
           .then(res => {
-            result = res.data;
             this.disabled = false;
             this.nominate = "Nominate";
+            result = res.data;
             if (result.success) {
-              var add = {
-                person: name,
-                reg_no: reg_no,
-                category: category,
-                personImage: result.success.success_text
-              };
-              this.disabled = true;
-              this.nominate = "Nominating...";
-              axios
-                .post(`${API}/add`, { ...add })
-                .then(res => {
-                  this.disabled = false;
-                  this.nominate = "Nominate";
-                  result = res.data;
-                  if (result.success) {
-                    swal("👌👌", `${result.success.success_text}`, "success");
-                    this.reg_no = "";
-                    this.name = "";
-                    this.category = "";
-                    this.imageSelected = "";
-                  } else {
-                    this.disabled = false;
-                    this.nominate = "Nominate";
-                    swal({
-                      title: `Coudn't nominate ${name}`,
-                      icon: "error"
-                    });
-                  }
-                })
-                .catch(() => {
-                  this.disabled = false;
-                  this.nominate = "Nominate";
-                  swal({
-                    title: `No connection to server`,
-                    icon: "error"
-                  });
-                });
+              swal("👌👌", `${result.success.success_text}`, "success");
+              this.reg_no = "";
+              this.name = "";
+              this.category = "";
+              this.imageSelected = "";
             } else {
               this.disabled = false;
               this.nominate = "Nominate";
               swal({
-                title: `${result.error.err_text}`,
+                title: `Coudn't nominate ${name}`,
                 icon: "error"
               });
             }

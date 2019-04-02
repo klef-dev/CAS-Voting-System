@@ -23,6 +23,7 @@
     <!-- END TEMPLATES -->
 
     <?php include_once './includes/scripts.php'?>
+
     <script src="./js/klefcodes/uploadcare.js"></script>
     <script src="/js/klefcodes/uploadcare-effect.js"></script>
     <script src="./js/klefcodes/components/Admin.js"></script>
@@ -39,5 +40,8 @@
     <script type="text/javascript">
         swal ( "Notice" , "Don't use Internet Explorer Browser to run this site" , "warning" )
       </script>
+      <script>
+  uploadcare.registerTab('preview', uploadcareTabEffects)
+</script>
   </body>
 </html>
