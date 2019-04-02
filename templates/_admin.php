@@ -193,7 +193,7 @@
                   <a @click="personImage" class="btn btn-primary btn-send-message" :disabled="disabled">
                     Pick an Image
                   </a>
-                  <span v-if="imageSelected !== null" v-html="imageSelected"></span>
+                  <span id="imageSelected"></span>
                 </div>
                 <div class="form-group">
                   

@@ -32,6 +32,9 @@ const AddNominees = Vue.component("add_nominees", {
           file.promise().done(function(fileInfo) {
             var img = fileInfo.cdnUrl;
             localStorage.setItem("personImage", img);
+            $(() => {
+              $("#imageSelected").html(img);
+            })
           });
         });
     },
