@@ -19,7 +19,6 @@ const AddNominees = Vue.component("add_nominees", {
   methods: {
     personImage(event) {
       event.preventDefault();
-      e.preventDefault();
       uploadcare.registerTab("preview", uploadcareTabEffects);
       UPLOADCARE_EFFECTS = ["blur", "sharp", "grayscale", "crop"];
       uploadcare
