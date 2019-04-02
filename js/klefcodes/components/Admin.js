@@ -13,7 +13,7 @@ const AddNominees = Vue.component("add_nominees", {
       nominate: "Nominate",
       imageSelected: null,
       disabled: false,
-      image: ""
+      image: []
     };
   },
   methods: {
@@ -33,10 +33,10 @@ const AddNominees = Vue.component("add_nominees", {
             console.log(img);
             this.imageSelected = img;
             console.log(this.imageSelected);
-            image.push(img);
+            this.image.push({img});
           });
         });
-      console.log(this.imageSelected);
+      console.log(this.image);
     },
     Auth(e) {
       e.preventDefault();
