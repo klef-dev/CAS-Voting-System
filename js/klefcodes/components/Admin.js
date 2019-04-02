@@ -31,12 +31,13 @@ const AddNominees = Vue.component("add_nominees", {
           file.promise().done(function(fileInfo) {
             var img = fileInfo.cdnUrl;
             console.log(img);
-            this.imageSelected = img;
+            image.push(img);
+            console.log(image);
             console.log(this.imageSelected);
-            this.image.push(img);
+
           });
         });
-      console.log(this.image);
+      console.log(image);
     },
     Auth(e) {
       e.preventDefault();
