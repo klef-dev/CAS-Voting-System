@@ -126,7 +126,7 @@ const catType = Vue.component("cat_type", {
                 person: nominees.person,
                 personId: nominees.personId,
                 reg_no: nominees.reg_no,
-                img: `background-image: url(${API}/${nominees.personImage});`
+                img: `background-image: url(${nominees.personImage});`
               });
             });
           }
@@ -157,7 +157,7 @@ const catType = Vue.component("cat_type", {
                 person: nominees.person,
                 personId: nominees.personId,
                 reg_no: nominees.reg_no,
-                img: `background-image: url(${API}/${nominees.personImage});`
+                img: `background-image: url(${nominees.personImage});`
               });
             });
           }

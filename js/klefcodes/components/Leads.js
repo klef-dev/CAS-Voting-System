@@ -20,7 +20,7 @@ const Leads = Vue.component("leads", {
               person: leads.person,
               category: leads.category,
               likes: leads.likes,
-              img: `background-image: url(${API}/${leads.personImage});`,
+              img: `background-image: url(${leads.personImage});`,
               link: '/categories/'+leads.category
             });
           });
@@ -42,7 +42,7 @@ const Leads = Vue.component("leads", {
               person: leads.person,
               category: leads.category,
               likes: leads.likes,
-              img: `background-image: url(${API}/${leads.personImage});`,
+              img: `background-image: url(${leads.personImage});`,
               link: '/categories/' + leads.category
             });
           });
@@ -64,7 +64,7 @@ const Leads = Vue.component("leads", {
               person: leads.person,
               category: leads.category,
               likes: leads.likes,
-              img: `background-image: url(${API}/${leads.personImage});`,
+              img: `background-image: url(${leads.personImage});`,
               link: '/categories/' + leads.category
             });
           });
@@ -86,7 +86,7 @@ const Leads = Vue.component("leads", {
               person: leads.person,
               category: leads.category,
               likes: leads.likes,
-              img: `background-image: url(${API}/${leads.personImage});`,
+              img: `background-image: url(${leads.personImage});`,
               link: '/categories/' + leads.category
             });
           });
@@ -108,7 +108,7 @@ const Leads = Vue.component("leads", {
               person: leads.person,
               category: leads.category,
               likes: leads.likes,
-              img: `background-image: url(${API}/${leads.personImage});`,
+              img: `background-image: url($${leads.personImage});`,
               link: '/categories/' + leads.category
             });
           });
@@ -130,7 +130,7 @@ const Leads = Vue.component("leads", {
               person: leads.person,
               category: leads.category,
               likes: leads.likes,
-              img: `background-image: url(${API}/${leads.personImage});`,
+              img: `background-image: url(${leads.personImage});`,
               link: '/categories/' + leads.category
             });
           });
@@ -152,7 +152,7 @@ const Leads = Vue.component("leads", {
               person: leads.person,
               category: leads.category,
               likes: leads.likes,
-              img: `background-image: url(${API}/${leads.personImage});`,
+              img: `background-image: url(${leads.personImage});`,
               link: '/categories/' + leads.category
             });
           });
@@ -174,7 +174,7 @@ const Leads = Vue.component("leads", {
               person: leads.person,
               category: leads.category,
               likes: leads.likes,
-              img: `background-image: url(${API}/${leads.personImage});`,
+              img: `background-image: url(${leads.personImage});`,
               link: '/categories/' + leads.category
             });
           });
