@@ -18,23 +18,20 @@ const AddNominees = Vue.component("add_nominees", {
   methods: {
     personImage(event) {
       event.preventDefault();
-      UPLOADCARE_PUBLIC_KEY = 'ccf0fb3bf1e665a4c185';
-      UPLOADCARE_TABS = 'file camera url facebook gdrive instagram';
       uploadcare.registerTab("preview", uploadcareTabEffects);
       UPLOADCARE_EFFECTS = ["blur", "sharp", "grayscale", "crop"]; 
       UPLOADCARE_CLEARABLE = true;
       UPLOADCARE_IMAGE_SHRINK = "1024x1024";
-      UPLOADCARE_IMAGES_ONLY = true;
-      UPLOADCARE_PREVIEW_STEP = true;
       uploadcare
         .openDialog(null, {
           previewStep: true,
-          imagesOnly: true
+          imagesOnly: true,
+          imageShrink: "1024x1024"
         })
         .done(function(file) {
           file.promise().done(function(fileInfo) {
             var img = fileInfo.cdnUrl;
-            localStorage.setItem("personImage", img)
+            localStorage.setItem("personImage", img);
           });
         });
     },
