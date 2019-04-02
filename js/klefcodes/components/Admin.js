@@ -12,14 +12,14 @@ const AddNominees = Vue.component("add_nominees", {
       category: "",
       nominate: "Nominate",
       imageSelected: null,
-      disabled: false,
+      disabled: false
     };
   },
   methods: {
     personImage(event) {
       event.preventDefault();
       uploadcare.registerTab("preview", uploadcareTabEffects);
-      UPLOADCARE_EFFECTS = ["blur", "sharp", "grayscale", "crop"]; 
+      UPLOADCARE_EFFECTS = ["blur", "sharp", "grayscale", "crop"];
       UPLOADCARE_CLEARABLE = true;
       UPLOADCARE_IMAGE_SHRINK = "1024x1024";
       uploadcare
@@ -33,8 +33,8 @@ const AddNominees = Vue.component("add_nominees", {
             var img = fileInfo.cdnUrl;
             localStorage.setItem("personImage", img);
             $(() => {
-              $("#imageSelected").html(img);
-            })
+              $("#imageSelected").html(`<img src="${img}" width="50" />`);
+            });
           });
         });
     },
@@ -112,44 +112,49 @@ const AddNominees = Vue.component("add_nominees", {
       } else if (name < 3) {
         swal("Oops", "Name too short to proceed", "error");
       } else {
-        this.imageSelected =  localStorage.getItem("personImage");
-        var add = {
-          person: name,
-          reg_no: reg_no,
-          category: category,
-          personImage: this.imageSelected
-        };
-        this.disabled = true;
-        this.nominate = "Nominating...";
-        axios
-          .post(`${API}/add`, { ...add })
-          .then(res => {
-            this.disabled = false;
-            this.nominate = "Nominate";
-            result = res.data;
-            if (result.success) {
-              swal("👌👌", `${result.success.success_text}`, "success");
-              this.reg_no = "";
-              this.name = "";
-              this.category = "";
-              this.imageSelected = "";
-            } else {
+        this.imageSelected = localStorage.getItem("personImage");
+        if (this.imageSelected == null) {
+          swal("Hey", "Please upload an image for "+name, "warning");
+        } else {
+          var add = {
+            person: name,
+            reg_no: reg_no,
+            category: category,
+            personImage: this.imageSelected
+          };
+          this.disabled = true;
+          this.nominate = "Nominating...";
+          axios
+            .post(`${API}/add`, { ...add })
+            .then(res => {
+              this.disabled = false;
+              this.nominate = "Nominate";
+              result = res.data;
+              if (result.success) {
+                swal("👌👌", `${result.success.success_text}`, "success");
+                this.reg_no = "";
+                this.name = "";
+                this.category = "";
+                this.imageSelected = "";
+                localStorage.removeItem("personImage");
+              } else {
+                this.disabled = false;
+                this.nominate = "Nominate";
+                swal({
+                  title: `Coudn't nominate ${name}`,
+                  icon: "error"
+                });
+              }
+            })
+            .catch(() => {
               this.disabled = false;
               this.nominate = "Nominate";
               swal({
-                title: `Coudn't nominate ${name}`,
+                title: `No connection to server`,
                 icon: "error"
               });
-            }
-          })
-          .catch(() => {
-            this.disabled = false;
-            this.nominate = "Nominate";
-            swal({
-              title: `No connection to server`,
-              icon: "error"
             });
-          });
+        }
       }
     }
   },
