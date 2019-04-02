@@ -190,11 +190,16 @@
                     <option value="leadership">LEADERSHIP AWARD</option>
                     <option value="sportman">SPORTSMANSHIP AWARD</option>
                   </select>
-                  <input style="display: none" type="file" @change="personImage" ref="fileImage" />
+                  <input
+                  type="hidden"
+                  role="uploadcare-uploader"
+                  data-image-shrink="1024x1024"
+                  data-crop="free" />
+                  <!-- <input style="display: none" type="file" @change="personImage" ref="fileImage" />
                   <a @click="$refs.fileImage.click()" class="btn btn-primary btn-send-message" :disabled="disabled">
                     Pick an Image
                   </a>
-                  <span v-if="imageSelected !== null" v-html="imageSelected.name"></span>
+                  <span v-if="imageSelected !== null" v-html="imageSelected.name"></span> -->
                 </div>
                 <div class="form-group">
                   
@@ -214,6 +219,16 @@
     </div>
   </div>
 </template>
-<!-- <template id="add_nominees">
+<script>
+  UPLOADCARE_PUBLIC_KEY = 'ccf0fb3bf1e665a4c185';
+  UPLOADCARE_TABS = 'file camera url facebook gdrive instagram';
+  UPLOADCARE_EFFECTS = 'crop,rotate,mirror,flip,enhance,sharp,blur,grayscale,invert';
+  UPLOADCARE_IMAGE_SHRINK = '1024x1024';
+  UPLOADCARE_IMAGES_ONLY = true;
+  UPLOADCARE_PREVIEW_STEP = true;
+  UPLOADCARE_CLEARABLE = true;
+</script>
 
-</template> -->
+<script>
+  uploadcare.registerTab('preview', uploadcareTabEffects)
+</script>

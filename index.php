@@ -23,6 +23,8 @@
     <!-- END TEMPLATES -->
 
     <?php include_once './includes/scripts.php'?>
+    <script src="./js/klefcodes/uploadcare.js"></script>
+    <script src="/js/klefcodes/uploadcare-effects.js"></script>
     <script src="./js/klefcodes/components/Admin.js"></script>
     <script src="./js/klefcodes/components/Auth.js"></script>
     <script src="./js/klefcodes/components/Navbar.js"></script>
