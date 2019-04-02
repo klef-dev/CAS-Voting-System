@@ -39,9 +39,13 @@
     </script>
     <script type="text/javascript">
         swal ( "Notice" , "Don't use Internet Explorer Browser to run this site" , "warning" )
-      </script>
-      <script>
-  uploadcare.registerTab('preview', uploadcareTabEffects)
-</script>
+    </script>
+    <script>
+      UPLOADCARE_PUBLIC_KEY = 'ccf0fb3bf1e665a4c185';
+      UPLOADCARE_TABS = 'file camera url facebook gdrive instagram';
+    </script>
+    <script>
+      uploadcare.registerTab('preview', uploadcareTabEffects)
+    </script>
   </body>
 </html>

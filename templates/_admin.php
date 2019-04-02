@@ -213,12 +213,3 @@
     </div>
   </div>
 </template>
-<script>
-  UPLOADCARE_PUBLIC_KEY = 'ccf0fb3bf1e665a4c185';
-  UPLOADCARE_TABS = 'file camera url facebook gdrive instagram';
-  UPLOADCARE_EFFECTS = 'crop,rotate,mirror,flip,enhance,sharp,blur,grayscale,invert';
-  UPLOADCARE_IMAGE_SHRINK = '1024x1024';
-  UPLOADCARE_IMAGES_ONLY = true;
-  UPLOADCARE_PREVIEW_STEP = true;
-  UPLOADCARE_CLEARABLE = true;
-</script>
