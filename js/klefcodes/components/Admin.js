@@ -30,6 +30,7 @@ const AddNominees = Vue.component("add_nominees", {
         .done(function(file) {
           file.promise().done(function(fileInfo) {
             var img = fileInfo.cdnUrl;
+            console.log(img);
             image.push(img);
           });
         });
