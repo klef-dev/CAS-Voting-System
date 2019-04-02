@@ -18,9 +18,9 @@ const AddNominees = Vue.component("add_nominees", {
   methods: {
     personImage(event) {
       event.preventDefault();
-      uploadcare.registerTab("preview", uploadcareTabEffects);
       UPLOADCARE_PUBLIC_KEY = 'ccf0fb3bf1e665a4c185';
       UPLOADCARE_TABS = 'file camera url facebook gdrive instagram';
+      uploadcare.registerTab("preview", uploadcareTabEffects);
       UPLOADCARE_EFFECTS = ["blur", "sharp", "grayscale", "crop"]; 
       UPLOADCARE_CLEARABLE = true;
       UPLOADCARE_IMAGE_SHRINK = "1024x1024";
