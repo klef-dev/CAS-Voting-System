@@ -12,7 +12,8 @@ const AddNominees = Vue.component("add_nominees", {
       category: "",
       nominate: "Nominate",
       imageSelected: null,
-      disabled: false
+      disabled: false,
+      image: ""
     };
   },
   methods: {

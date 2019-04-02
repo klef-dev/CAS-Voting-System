@@ -194,7 +194,8 @@
                   type="hidden"
                   role="uploadcare-uploader"
                   data-image-shrink="1024x1024"
-                  data-crop="free" />
+                  data-crop="free"
+                  v-model="image" />
                   <!-- <input style="display: none" type="file" @change="personImage" ref="fileImage" />
                   <a @click="$refs.fileImage.click()" class="btn btn-primary btn-send-message" :disabled="disabled">
                     Pick an Image
