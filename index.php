@@ -25,7 +25,6 @@
     <?php include_once './includes/scripts.php'?>
 
     <script src="./js/klefcodes/uploadcare.js"></script>
-    <script src="/js/klefcodes/uploadcare-effect.js"></script>
     <script src="./js/klefcodes/components/Admin.js"></script>
     <script src="./js/klefcodes/components/Auth.js"></script>
     <script src="./js/klefcodes/components/Navbar.js"></script>
@@ -43,9 +42,6 @@
     <script>
       UPLOADCARE_PUBLIC_KEY = 'ccf0fb3bf1e665a4c185';
       UPLOADCARE_TABS = 'file camera url facebook gdrive instagram';
-    </script>
-    <script>
-      uploadcare.registerTab('preview', uploadcareTabEffects)
     </script>
   </body>
 </html>
