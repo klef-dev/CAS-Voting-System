@@ -33,7 +33,7 @@ const AddNominees = Vue.component("add_nominees", {
             console.log(img);
             this.imageSelected = img;
             console.log(this.imageSelected);
-            this.image.push({img});
+            this.image.push(img);
           });
         });
       console.log(this.image);
