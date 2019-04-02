@@ -114,7 +114,7 @@ const AddNominees = Vue.component("add_nominees", {
       } else {
         this.imageSelected = localStorage.getItem("personImage");
         if (this.imageSelected == null) {
-          swal("Hey", "Please upload an image for "+name, "warning");
+          swal("Hey", "Please upload an image for " + name, "warning");
         } else {
           var add = {
             person: name,
@@ -135,8 +135,11 @@ const AddNominees = Vue.component("add_nominees", {
                 this.reg_no = "";
                 this.name = "";
                 this.category = "";
-                this.imageSelected = "";
+                this.imageSelected = null;
                 localStorage.removeItem("personImage");
+                $(() => {
+                  $("#imageSelected").html("");
+                });
               } else {
                 this.disabled = false;
                 this.nominate = "Nominate";
