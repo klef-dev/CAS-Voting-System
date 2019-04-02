@@ -13,14 +13,19 @@ const AddNominees = Vue.component("add_nominees", {
       nominate: "Nominate",
       imageSelected: null,
       disabled: false,
-      image: []
     };
   },
   methods: {
     personImage(event) {
       event.preventDefault();
       uploadcare.registerTab("preview", uploadcareTabEffects);
-      UPLOADCARE_EFFECTS = ["blur", "sharp", "grayscale", "crop"];
+      UPLOADCARE_PUBLIC_KEY = 'ccf0fb3bf1e665a4c185';
+      UPLOADCARE_TABS = 'file camera url facebook gdrive instagram';
+      UPLOADCARE_EFFECTS = ["blur", "sharp", "grayscale", "crop"]; 
+      UPLOADCARE_CLEARABLE = true;
+      UPLOADCARE_IMAGE_SHRINK = "1024x1024";
+      UPLOADCARE_IMAGES_ONLY = true;
+      UPLOADCARE_PREVIEW_STEP = true;
       uploadcare
         .openDialog(null, {
           previewStep: true,
@@ -29,10 +34,7 @@ const AddNominees = Vue.component("add_nominees", {
         .done(function(file) {
           file.promise().done(function(fileInfo) {
             var img = fileInfo.cdnUrl;
-            console.log(img);
-            image.push(img);
-            console.log(image);
-            console.log(event)
+            localStorage.setItem("personImage", img)
           });
         });
     },
@@ -110,6 +112,7 @@ const AddNominees = Vue.component("add_nominees", {
       } else if (name < 3) {
         swal("Oops", "Name too short to proceed", "error");
       } else {
+        this.imageSelected =  localStorage.getItem("personImage");
         var add = {
           person: name,
           reg_no: reg_no,
