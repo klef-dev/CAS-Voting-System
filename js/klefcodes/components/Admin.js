@@ -51,8 +51,7 @@ const AddNominees = Vue.component("add_nominees", {
         };
         this.login = "Loading...";
         this.disabled = true;
-        axios
-          .post(`${API}/login_admin`, { ...login })
+        instance.post(`/login_admin`, { ...login })
           .then(response => {
             this.password = "";
             this.login = "Login";
@@ -64,8 +63,7 @@ const AddNominees = Vue.component("add_nominees", {
               localStorage.setItem("adminToken", result.token);
               this.disabled = true;
               this.login = "Loading...";
-              axios
-                .get(`${API}/loggedin/${result.token}`)
+              instance.get(`/loggedin/${result.token}`)
                 .then(res => {
                   this.disabled = false;
                   this.login = "Login";
@@ -120,8 +118,7 @@ const AddNominees = Vue.component("add_nominees", {
           };
           this.disabled = true;
           this.nominate = "Nominating...";
-          axios
-            .post(`${API}/add`, { ...add })
+          instance.post(`/add`, { ...add })
             .then(res => {
               this.disabled = false;
               this.nominate = "Nominate";
@@ -163,8 +160,7 @@ const AddNominees = Vue.component("add_nominees", {
       if (token === null) {
         this.user_id = null;
       } else {
-        axios
-          .get(`${API}/loggedin/${token}`)
+        instance.get(`/loggedin/${token}`)
           .then(res => {
             var data = res.data;
             if (data.error) {
@@ -180,8 +176,5 @@ const AddNominees = Vue.component("add_nominees", {
       }
     };
     check();
-    setInterval(() => {
-      check();
-    }, 3000);
   }
 });

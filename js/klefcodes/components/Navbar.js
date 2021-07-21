@@ -8,8 +8,7 @@ const Navbar = Vue.component("navbar", {
     Logout(e) {
       e.preventDefault();
       let token = localStorage.getItem("token");
-      axios
-        .post(`${API}/logout`, { token: token })
+      instance.post(`/logout`, { token: token })
         .then(() => {
           localStorage.clear();
           this.user_id = null;

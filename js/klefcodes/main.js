@@ -1,4 +1,3 @@
-const API = "https://cas-vs-server.herokuapp.com/public";
 const routes = [
   { path: "/", component: Home },
   { path: "*", component: NotFound },
@@ -29,8 +28,7 @@ new Vue({
       if (token === null) {
         this.user_id = null;
       } else {
-        axios
-          .get(`${API}/loggedin/${token}`)
+        instance.get(`/loggedin/${token}`)
           .then(res => {
             var data = res.data;
             if (data.error) {
@@ -49,16 +47,14 @@ new Vue({
       if (adminToken === null) {
         this.admin = null;
       } else {
-        axios
-          .get(`${API}/loggedin/${adminToken}`)
+        instance.get(`/loggedin/${adminToken}`)
           .then(res => {
             var data = res.data;
             if (data.error) {
               this.admin = null;
             } else {
               this.admin = data[0].user_id;
-              axios
-                .get(`${API}/user/${this.admin}`)
+              instance.get(`/user/${this.admin}`)
                 .then(res => {
                   var data = res.data;
                   if (data.error) {
@@ -77,11 +73,10 @@ new Vue({
           });
       }
     }
-    checkToken();
-    checkAdminToken();
-    setInterval(() => {
-      checkToken();
+    if (localStorage.getItem("adminToken")) {
       checkAdminToken();
-    }, 2000);
+    } else {
+      checkToken();
+    }
   }
 }).$mount("#cas__app");

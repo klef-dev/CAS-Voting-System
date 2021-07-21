@@ -32,6 +32,7 @@
     <script src="./js/klefcodes/components/Leads.js"></script>
     <script src="./js/klefcodes/components/Categories.js"></script>
     <script src="./js/klefcodes/components/catType.js"></script>
+		<script src="./js/klefcodes/axiosInit.js"></script>
 		<script src="./js/klefcodes/main.js"></script>
 		<script>
 			document.getElementById("date").innerHTML = new Date().getFullYear()

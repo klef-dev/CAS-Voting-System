@@ -8,8 +8,7 @@ const Leads = Vue.component("leads", {
   created() {
     const getLeads = () => {
       // FRESHMAN
-      axios
-        .get(`${API}/leads/freshman`)
+      instance.get(`/leads/freshman`)
         .then(response => {
           leads = response.data;
           leads.map(leads => {
@@ -30,8 +29,7 @@ const Leads = Vue.component("leads", {
         });
 
       // FACE OF CAS
-      axios
-        .get(`${API}/leads/focas`)
+      instance.get(`/leads/focas`)
         .then(response => {
           leads = response.data;
           leads.map(leads => {
@@ -52,8 +50,7 @@ const Leads = Vue.component("leads", {
         });
 
       // SOCIABLE
-      axios
-        .get(`${API}/leads/sociable`)
+      instance.get(`/leads/sociable`)
         .then(response => {
           leads = response.data;
           leads.map(leads => {
@@ -74,8 +71,7 @@ const Leads = Vue.component("leads", {
         });
 
       // ENTERPRENEUR
-      axios
-        .get(`${API}/leads/enterpreneur`)
+      instance.get(`/leads/enterpreneur`)
         .then(response => {
           leads = response.data;
           leads.map(leads => {
@@ -96,8 +92,7 @@ const Leads = Vue.component("leads", {
         });
 
       // FASHIONABLE
-      axios
-        .get(`${API}/leads/fashionable`)
+      instance.get(`/leads/fashionable`)
         .then(response => {
           leads = response.data;
           leads.map(leads => {
@@ -118,8 +113,7 @@ const Leads = Vue.component("leads", {
         });
 
       // FINAL YEAR PERSONALITY
-      axios
-        .get(`${API}/leads/fypersonality`)
+      instance.get(`/leads/fypersonality`)
         .then(response => {
           leads = response.data;
           leads.map(leads => {
@@ -140,8 +134,7 @@ const Leads = Vue.component("leads", {
         });
 
       // LEADERSHIP
-      axios
-        .get(`${API}/leads/leadership`)
+      instance.get(`/leads/leadership`)
         .then(response => {
           leads = response.data;
           leads.map(leads => {
@@ -162,8 +155,7 @@ const Leads = Vue.component("leads", {
         });
 
       // SPORTMAN
-      axios
-        .get(`${API}/leads/sportman`)
+      instance.get(`/leads/sportman`)
         .then(response => {
           leads = response.data;
           leads.map(leads => {

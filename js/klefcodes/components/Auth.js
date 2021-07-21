@@ -28,8 +28,7 @@ const Login = Vue.component("login", {
           password: password
         };
         this.login = "Loading...";
-        axios
-          .post(`${API}/login`, { ...login })
+        instance.post(`/login`, { ...login })
           .then(response => {
             this.password = "";
             this.login = "Login";
@@ -56,8 +55,7 @@ const Login = Vue.component("login", {
       if (token === null) {
         this.user_id = null;
       } else {
-        axios
-          .get(`${API}/loggedin/${token}`)
+        instance.get(`/loggedin/${token}`)
           .then(res => {
             var data = res.data;
             if (data.error) {
@@ -119,8 +117,7 @@ const Signup = Vue.component("signup", {
           password: password
         };
         this.signup = "Signing Up...";
-        axios
-          .post(`${API}/signup`, { ...signup })
+        instance.post(`/signup`, { ...signup })
           .then(response => {
             result = response.data;
             this.signup = "Signup";

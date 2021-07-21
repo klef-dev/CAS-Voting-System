@@ -25,8 +25,7 @@ const catType = Vue.component("cat_type", {
           user_id: this.user_id,
           type: this.type
         };
-        axios
-          .post(`${API}/vote`, { ...vote })
+        instance.post(`/vote`, { ...vote })
           .then(res => {
             result = res.data;
             if (result.error) {
@@ -80,8 +79,7 @@ const catType = Vue.component("cat_type", {
       if (token === null) {
         this.user_id = null;
       } else {
-        axios
-          .get(`${API}/loggedin/${token}`)
+        instance.get(`/loggedin/${token}`)
           .then(res => {
             var data = res.data;
             if (data.error) {
@@ -108,8 +106,7 @@ const catType = Vue.component("cat_type", {
       $(() => {
         $("#show_loader").show();
       });
-      axios
-        .get(`${API}/cat/${this.type}`)
+      instance.get(`/cat/${this.type}`)
         .then(res => {
           $(() => {
             $("#show_loader").hide();
@@ -142,8 +139,7 @@ const catType = Vue.component("cat_type", {
 
     // GET NEW UPDATE EVERY 10SECS
     setInterval(() => {
-      axios
-        .get(`${API}/cat/${this.type}`)
+      instance.get(`/cat/${this.type}`)
         .then(res => {
           result = res.data;
           if (result === "") {
